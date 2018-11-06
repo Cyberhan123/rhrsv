@@ -45,7 +45,7 @@ class BasicLayout extends React.Component {
   render() {
     return (
       <Layout className="layout">
-        <Header style={{ background: '#000' }}>
+        <Header style={{ background: '#001529' }}>
           <Menu
             theme="dark"
             onClick={this.handleClick}

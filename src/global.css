@@ -17,3 +17,9 @@ body {
 .ant-carousel .slick-slide h3 {
   color: #fff;
 }
+.video-react{
+  padding-top: 5%;
+}
+.video-react-video{
+  width: 100%;
+}
