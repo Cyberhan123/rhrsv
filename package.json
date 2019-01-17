@@ -30,6 +30,15 @@
     "node": ">=8.0.0"
   },
   "dependencies": {
+    "antd": "^3.12.3",
+    "enquire-js": "^0.2.1",
+    "rc-animate": "^2.6.0",
+    "rc-banner-anim": "^2.1.2",
+    "rc-queue-anim": "^1.6.10",
+    "rc-scroll-anim": "^2.5.6",
+    "rc-tween-one": "^2.2.22",
+    "react": "^16.7.0",
+    "react-dom": "^16.7.0",
     "video-react": "^0.13.1"
   }
 }

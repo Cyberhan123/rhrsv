@@ -1,15 +1,9 @@
-
-.normal {
-  font-family: Georgia, sans-serif;
-  text-align: center;
+:global{
+@import './less/common.less';
+@import './less/custom.less';
+@import './less/content.less';
+@import './less/nav0.less';
+@import './less/footer0.less';
+@import './less/edit.less';
 }
 
-.title {
-  font-size: 2.5rem;
-  font-weight: normal;
-  letter-spacing: -1px;
-  background: darkslateblue;
-  padding: .6em 0;
-  color: white;
-  margin: 0;
-}
