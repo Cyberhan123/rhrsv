@@ -2,21 +2,15 @@
 /* eslint arrow-parens: 0 */
 import React from 'react';
 import { enquireScreen } from 'enquire-js';
-
-import Nav0 from '../../layouts/Nav';
 import Banner0 from './Banner0';
 import Content0 from './Content0';
 import Content1 from './Content1';
 import Content3 from './Content3';
-import Footer0 from '../../layouts/Footer';
-
 import {
-  Nav00DataSource,
   Banner00DataSource,
   Content00DataSource,
   Content10DataSource,
   Content30DataSource,
-  Footer00DataSource,
 } from './data.source';
 import './less/antMotionStyle.less';
 
@@ -56,12 +50,6 @@ export default class Home extends React.Component {
 
   render() {
     const children = [
-      <Nav0
-        id="Nav0_0"
-        key="Nav0_0"
-        dataSource={Nav00DataSource}
-        isMobile={this.state.isMobile}
-      />,
       <Banner0
         id="Banner0_0"
         key="Banner0_0"
@@ -84,12 +72,6 @@ export default class Home extends React.Component {
         id="Content3_0"
         key="Content3_0"
         dataSource={Content30DataSource}
-        isMobile={this.state.isMobile}
-      />,
-      <Footer0
-        id="Footer0_0"
-        key="Footer0_0"
-        dataSource={Footer00DataSource}
         isMobile={this.state.isMobile}
       />,
     ];

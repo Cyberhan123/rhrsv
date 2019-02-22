@@ -1,5 +1,6 @@
 import React from 'react';
 import { findDOMNode } from 'react-dom';
+import Link from 'umi/link';
 import TweenOne from 'rc-tween-one';
 import { Menu } from 'antd';
 
@@ -29,18 +30,6 @@ class Header extends React.Component {
     delete props.dataSource;
     delete props.isMobile;
     const { menuHeight, phoneOpen } = this.state;
-    const navData = dataSource.Menu.children;
-    const navChildren = Object.keys(navData).map((key, i) => (
-      <Item key={i.toString()} {...navData[key]}>
-        <a
-          {...navData[key].a}
-          href={navData[key].a.href}
-          target={navData[key].a.target}
-        >
-          {navData[key].a.children}
-        </a>
-      </Item>
-    ));
     return (
       <TweenOne
         component="header"
@@ -83,7 +72,18 @@ class Header extends React.Component {
               defaultSelectedKeys={['0']}
               theme={isMobile ? 'dark' : 'default'}
             >
-              {navChildren}
+             <Item key="1">
+               <Link to="/">欢迎</Link>
+             </Item>
+              <Item key='2'>
+                <Link to="/BigData">大数据</Link>
+              </Item>
+              <Item key='3'>
+                <Link to="/Shop">商城</Link>
+              </Item>
+              <Item key='4'>
+                <Link to="/About">关于</Link>
+              </Item>
             </Menu>
           </TweenOne>
         </div>
