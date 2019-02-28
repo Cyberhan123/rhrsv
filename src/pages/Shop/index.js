@@ -1,16 +1,20 @@
 import React from 'react'
 import style from './index.css'
 import CrossList from '@/components/CrossList';
+import BigCardList from '@/components/BigCardList';
 import {Carousel, Pagination, Row, Col} from 'antd';
 
 export default class Shop extends React.Component {
   onChange(a, b, c) {
     console.log(a, b, c);
   }
-  onJump(pageNumber){
+
+  onJump(pageNumber) {
     console.log('Page: ', pageNumber);
   }
+
   render() {
+
     return (
       <div>
         <Carousel afterChange={this.onChange}>
@@ -22,9 +26,13 @@ export default class Shop extends React.Component {
         <div>
           <CrossList/>
         </div>
+        <div>
+          <BigCardList/>
+        </div>
         <Row>
           <Col span={12} offset={6}>
-            <Pagination showQuickJumper defaultCurrent={1} total={500} onChange={this.onJump} className={style.container}/>,
+            <Pagination showQuickJumper defaultCurrent={1} total={500} onChange={this.onJump}
+                        className={style.container}/>,
           </Col>
         </Row>
 
