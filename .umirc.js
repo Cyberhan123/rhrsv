@@ -15,5 +15,5 @@ export default {
     }],
 
   ],
-  outputPath:'./../resources/templates',
+  outputPath:'/dist',
 }
