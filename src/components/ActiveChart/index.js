@@ -13,7 +13,7 @@ function getActiveData() {
   for (let i = 0; i < 24; i += 1) {
     activeData.push({
       x: `${fixedZero(i)}:00`,
-      y: Math.floor(Math.random() * 200) + i * 50,
+      y: Math.floor(Math.random() * 1) + i * 5,
     });
   }
   return activeData;
@@ -53,13 +53,13 @@ export default class ActiveChart extends Component {
 
     return (
       <div className={styles.activeChart}>
-        <NumberInfo subTitle="目标评估" total="有望达到预期" />
+        <NumberInfo subTitle="当前水文" total="河水温度测量" />
         <div style={{ marginTop: 32 }}>
           <MiniArea
             animate={false}
             line
             borderWidth={2}
-            height={84}
+            height={50}
             scale={{
               y: {
                 tickCount: 3,
@@ -77,8 +77,8 @@ export default class ActiveChart extends Component {
         {activeData && (
           <div>
             <div className={styles.activeChartGrid}>
-              <p>{[...activeData].sort()[activeData.length - 1].y + 200} 亿元</p>
-              <p>{[...activeData].sort()[Math.floor(activeData.length / 2)].y} 亿元</p>
+              <p>{[...activeData].sort()[activeData.length - 1].y/100}摄氏度</p>
+              <p>{[...activeData].sort()[Math.floor(activeData.length / 2)].y-75}摄氏度</p>
             </div>
             <div className={styles.dashedLine}>
               <div className={styles.line} />

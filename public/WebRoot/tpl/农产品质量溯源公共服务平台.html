@@ -1,0 +1,282 @@
+<!DOCTYPE html >
+<html>
+	<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+	<meta http-equiv="Content-Language" content="zh-CN">
+	<title>溯源查询首页</title>
+	<style>
+		#wstatus { position:fixed; left:200px; top:400px; width:auto; height:38px; line-height:38px; background:#fff; border:solid 4px #e5e5e5; padding:5px; z-index:9999; }
+		#wstatus .wstatus_s { width:38px; height:38px; float:left; }
+		#wstatus .wstatus_s1 {  background:url(http://sats.gdcct.com:80/ts/images/clientresult/ico.png) no-repeat left center; }
+		#wstatus .wstatus_f { padding:0 6px 0 6px; text-align:left; font-size:14px; color:#333; font-family:"微软雅黑"; }
+		#bremove { width:100%; height:100%; background:#000; opacity:0.3; filter:alpha(opacity=30); z-index:900; position:fixed; left:0; top:0; }
+	</style>
+	<script type="text/javascript" src="../js/jquery-2.1.4.min.js"></script>
+	<script type="text/javascript" src="../js/common.js"></script>
+	<script type="text/javascript">
+	$(function(){
+		if("null" != "null" &&  "null" != ""){
+			popStatus(1, 'null', 2, '', true);
+		}
+	})
+	</script>
+	<script type="text/javascript">
+	        var code; //在全局 定义验证码  
+	        function createCode(){ 
+	        	code = "";
+	            var codeLength = 4;//验证码的长度  
+	            //所有候选组成验证码的字符，可以用中文  
+	            //var selectChar = new Array(0,1,2,3,4,5,6,7,8,9,'A','B','C','D','E','F','G','H','I','J','K','L','M','N','O','P','Q','R','S','T','U','V','W','X','Y','Z','a','b','c','d','e','f','g','h','i','j','k','l','m','n','o','p','q','r','s','t','u','v','w','x','y','z');  
+	            var selectChar = new Array(1,2,3,4,5,6,7,8,9,'A','B','C','D','E','F','G','H','J','K','L','M','N','P','Q','R','S','T','U','V','W','X','Y','Z','a','b','c','d','e','f','g','h','i','j','k','m','n','p','q','r','s','t','u','v','w','x','y','z');  
+	            for(var i=0; i<codeLength; i++)  
+	            {  
+	                var charIndex = Math.floor(Math.random()*60);  
+	                code += selectChar[charIndex];  
+	            }  
+	            return code;  
+	        }  
+	        
+	    	function validate ()
+	    	{  
+	    	    var inputCode = document.getElementById("vfcode").value.toLowerCase();
+	    	    if(inputCode.length == 0)  
+	    	    {  
+	    	        //alert("请输入验证码！"); 
+	    	        document.getElementById("vfcode").innerHTML = "";
+	    	        document.getElementById("showMsg").innerHTML = "请输入验证码";
+	    	        return false;  
+	    	    }  
+	    	    else if(inputCode != code.toLowerCase())  
+	    	    {  
+	    	        //alert("验证码输入错误！");  
+	    	        document.getElementById("vfcode").value = "";
+	    	        document.getElementById("showMsg").innerHTML = "验证码输入错误";
+	    	        show();//刷新验证码  
+	    	        return false;  
+	    	    }  
+	    	    else{
+    	        	document.loginForm.submit();
+    	        	return true;  
+	    	    } 
+	    	}  
+	</script>
+	<script type="text/javascript">
+		// "0"~"9"按钮
+		var ts = "";
+		function tsInput(name){
+			ts = document.getElementById("tracesource").value;
+			var num = document.getElementById(name).value;
+			ts += num;
+			document.getElementById("tracesource").value = ts;
+			
+		}
+		// 退格按钮
+		function btnBack(){
+			var tmpTS = document.getElementById("tracesource").value;
+			if(tmpTS.length > 0){
+				var tmpCode = tmpTS.substring(0, tmpTS.length-1);
+				document.getElementById("tracesource").value = tmpCode;
+				ts = tmpCode;
+			}
+		}
+		// 清除按钮
+		function btnClear(){
+			document.getElementById("tracesource").value = "";
+			ts = "";
+		}
+	</script>
+	<script language="javascript" type="text/javascript">
+	/** 提交验证函数 **/
+	/** 提交验证函数 **/
+	function submitFn() {
+		var tracesource = document.getElementById("tracesource").value.replace(
+				/\r/g, "").replace(/\n/g, "");
+		var iphone=document.getElementById('iphone').value;
+		if (!/^\d*$/.test(tracesource)) {
+			popStatus(1, '溯源码只能为数字！', 2, '', true);
+			document.getElementById("tracesource").focus();
+			return false;
+		} else if (tracesource.length >0 && tracesource.length != 20) {
+			popStatus(1, '溯源码的长度为20位！', 2, '', true);
+			document.getElementById("tracesource").focus();
+			return false;
+		} else if(tracesource.length == 0){
+			popStatus(1, '请输入溯源码！', 2, '', true);
+			document.getElementById("tracesource").focus();
+			return false;
+		}else if(iphone.length==0){
+			popStatus(1, '请输入手机号！', 2, '', true);
+			document.getElementById("tracesource").focus();
+			return false;
+		}
+		else if(!(/^1[3|4|5|8][0-9]\d{4,8}$/.test(iphone))){ 
+			popStatus(1, '请正确输入手机号！',2,'',true);
+			document.getElementById('iphone').focus();
+			return false;
+		}else{
+			document.searchForm.submit();
+			return true;
+		}
+	}
+
+	</script>
+	 <script type="text/javascript">
+        function aOnClick() {
+            var roleSelect = document.getElementById("roleID");
+            if (roleSelect.value == 0) {
+                alert("请选择登录角色！");
+            } else {
+				document.getElementById("selectRoleForm").submit();
+            	
+            }
+        }
+    </script>
+	<link type="text/css" rel="stylesheet" href="../css/sy.css">
+	<link type="text/css" rel="stylesheet" href="../css/style.css">
+</head>
+
+<body>
+<div class="headbox">
+	<div class="headtit">
+    	<div class="headtitbox">
+        	<p class="welcome">您好，欢迎来到农业产品网！</p>
+            <ul class="menubox">
+            	<li><a class="menu" href="../登录.html" target="_blank">请登录</a></li>
+				<li><a class="menu" href="../注册.html" target="_blank">免费注册</a></li>
+            </ul>
+			<div class="phonebox">
+            	<i class="icon-pic"></i>
+                <div class="tellnum">0451-87963519-815</div>
+            </div>
+			<ul class='menubox-right'>
+                <li><a class="menu-right" style='border-right:none;' href="../帮助中心.html" target="_blank">帮助中心</a></li>
+				<li><a class="menu-right" href="../我的订单.html" target="_blank">我的订单</a></li>
+				<li><a class="menu-right" href="../个人信息中心.html" target="_blank">个人中心</a></li>
+			</ul>
+        </div>
+    </div>
+<div class="banner" id="steps_0">
+	<div class="banner_c">
+    	<h2 class="sy">关爱健康，关注农产品质量溯源！</h2>
+        <div class="sy_search_box">
+        	 <form action='溯源查询详情页.html' name='searchForm'>
+            <input type="text" id="tracesource" name="tracesource" class="sy_num" placeholder="请输入您的溯源码">
+			<input type="text" id="iphone" name="iphone" class="sy_tel" placeholder="请输入您的手机号"><br>
+            <input type="button" value="马上追溯" class="sy_search_btn" onClick="javascript:submitFn();"/>
+            </form>
+        </div><br/>
+		
+    </div>
+</div>
+<div class="sy_container">
+	<h2 class="sy_case_title" id="steps_1">案例展示<em>(手机扫描产品标签上的二维码图片，即可查看产品的溯源信息：如产品批次、生产信息、检测信息等。试试看吧(*^__^*) )</em></h2>
+    <ul class="case_ul">
+    	<li>
+        	<img src="../images/c1.jpg" width="270" height="190">
+            <h3 class="name">黄金奈李</h3>
+            <span class="black_cover" style="display: none;"></span>
+            <span class="scan_code" style="top: -154px;"><img src="../images/c1.gif"></span>
+            <span class="scan_icon"></span>
+        </li>
+        <li>
+        	<img src="../images/c2.jpg" width="270" height="190">
+            <h3 class="name">洛川苹果</h3>
+            <span class="black_cover" style="display: none;"></span>
+            <span class="scan_code" style="top: -154px;"><img src="../images/c2.gif"></span>
+            <span class="scan_icon"></span>
+        </li>
+        <li>
+        	<img src="../images/c3.jpg" width="270" height="190">
+            <h3 class="name">中山神湾菠萝</h3>
+            <span class="black_cover"></span>
+            <span class="scan_code"><img src="../images/c3.gif"></span>
+            <span class="scan_icon"></span>
+        </li>
+        <li>
+        	<img src="../images/c4.jpg" width="270" height="190">
+            <h3 class="name">增城丝瓜</h3>
+            <span class="black_cover" style="display: none;"></span>
+            <span class="scan_code" style="top: -154px;"><img src="../images/c4.gif"></span>
+            <span class="scan_icon"></span>
+        </li>
+        <li>
+        	<img src="../images/c5.jpg" width="270" height="190">
+            <h3 class="name">增城冬瓜</h3>
+            <span class="black_cover"></span>
+            <span class="scan_code"><img src="../images/c5.gif"></span>
+            <span class="scan_icon"></span>
+        </li>
+        <li>
+        	<img src="../images/c6.jpg" width="270" height="190">
+            <h3 class="name">连平鹰嘴蜜桃</h3>
+            <span class="black_cover" style="display: none;"></span>
+            <span class="scan_code" style="top: -154px;"><img src="../images/c6.gif"></span>
+            <span class="scan_icon"></span>
+        </li>
+        <li>
+        	<img src="../images/c7.jpg" width="270" height="190">
+            <h3 class="name">郁南无核黄皮</h3>
+            <span class="black_cover"></span>
+            <span class="scan_code"><img src="../images/c7.gif"></span>
+            <span class="scan_icon"></span>
+        </li>
+        <li>
+        	<img src="../images/c8.jpg" width="270" height="190">
+            <h3 class="name">西牛麻竹笋</h3>
+            <span class="black_cover"></span>
+            <span class="scan_code"><img src="../images/c8.gif"></span>
+            <span class="scan_icon"></span>
+        </li>
+    </ul>
+    <h2 class="cus_tips_title" id="steps_2">消费者使用指南</h2>
+    <div class="cus_tips_con"><img src="../images/illu.jpg"></div>
+</div>
+<div class="footerbox">
+	<div class="ft_centerbox">
+        <div class="codebox clearfix">
+        	<div class="weixincode">
+            	<p class="code"><img src="../images/index_25.png" /></p>
+                <p class="title">手机农产品网<br/>官方微信</p>
+            </div>
+            <div class="weibocode">
+            	<p class="code"><img src="../images/index_25.png"; /></p>
+                <p class="title">扫码关注<br/>官方微博</p>
+            </div>
+        </div>  
+		<div class="jiaoben">
+		<div class="ft_bigbox">
+            	<p>服务热线：0451-87963519-815&nbsp;</p>
+				<p>传真号码：0451-87963519-815</p><br/>
+				<p>公司地址：哈尔滨市香坊区哈平路凯旋广场A栋19层</p> 
+        </div>
+		<ul class="clearfix">
+    	    <li><a href='#'>营业执照</a></li>
+            <li><a href='#'>软件著作权</a></li>
+            <li><a href='#'>ISO9000认证</a></li>
+            <li><a href='#'>AAA认证</a></li>
+            <li><a href='#'>商标</a></li>
+			<li><a href='#'>企业标准</a></li>
+			<li><a href='#'>产品检验报告</a></li>
+       </ul>
+    <div class="banquan">Copyright 2003-2016版权所有 哈尔滨翔冠科技开发有限公司</div>
+	</div>
+</div>
+	</div>
+	</div>
+<script type="text/javascript">
+$(function(){
+	var $navLi=$(".nav li");$navLi.each(function(i) {$navLi.eq(i).click(function(){$navLi.children("a").removeClass("on");$(this).children("a").addClass("on");
+	jQuery("html,body").stop(false,true).animate({scrollTop: jQuery("#steps_"+i).offset().top-80}, 800);return false;});});
+	$(window).scroll(function(){
+			var scTop = $(window).scrollTop(),$navLiA=$(".nav li a");var sh0=$("#steps_0").offset().top+200,sh1=$("#steps_1").offset().top+380,sh2=$("#steps_2").offset().top+100,sh3=$("#steps_3").offset().top;
+			if(scTop<=sh0){$navLiA.removeClass("on");$navLiA.eq(0).addClass("on");	
+			}else if(scTop>sh0 && scTop<=sh1){$navLiA.removeClass("on");$navLiA.eq(1).addClass("on");}else if(scTop>sh1 && scTop<=sh2){$navLiA.removeClass("on");$navLiA.eq(2).addClass("on");}else{$navLiA.removeClass("on");$navLiA.eq(3).addClass("on");}});  
+	 var $loginBtn=$(".login_btn");
+	    $loginBtn.hover(function(){$(this).addClass("lg_hover");},function(){$(this).removeClass("lg_hover");})
+	var $caseLi=$(".case_ul li");
+	$caseLi.each(function(i) {$caseLi.eq(i).hover(function(){$(this).children(".black_cover").stop(false,true).fadeIn(150);$(this).children("h3").addClass("hover");$(this).children(".scan_code").stop(false,true).animate({top:"0"},190);$(this).children(".scan_icon").addClass("scan_icon_hover");},function(){
+			$(this).children(".black_cover").stop(false,true).fadeOut(150);$(this).children("h3").removeClass("hover");$(this).children(".scan_code").stop(false,true).animate({top:"-154px"},190);$(this).children(".scan_icon").removeClass("scan_icon_hover");})});})
+</script>
+
+   </body>
+</html>

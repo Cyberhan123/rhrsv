@@ -1,0 +1,71 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<link href="css/style.css" rel="stylesheet" media="screen" type="text/css">
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>注册</title>
+<script type="text/javascript" src="js/jquery-1.4.2.min.js"></script>
+<script language="javascript" type="text/javascript" src="js/jquery.validate.js"></script>
+<script language="javascript" type="text/javascript" src="js/validate_expand.js"></script>
+<script language="javascript" type="text/javascript" src="js/validate.js"></script>
+<script type="text/javascript">
+$(document).ready(function(){
+	initValidator();
+});
+</script>
+	</head>
+<body>
+	<div class="headerbox">
+		<h2 class="hd_logo"></h2>
+		<div class="hd_img"></div>
+	</div>
+	<!--输入用户名-->
+<div class="demo">
+	<form id="thisForm" method="post" action="">
+	<table width="100%">
+		<tr>
+			<td class="tdcon">用户名：</td>
+			<td>
+				<input class="stext" type='text' name="userName" id="userName" value="" />
+				<div class="tipinfo"></div>
+			</td>
+		</tr>
+		<tr>
+			<td class="tdcon">密码：</td>
+			<td>
+				<input class="stext" type="password" name="passWord" id="passWord" value="" />
+				<div class="tipinfo"></div>
+			</td>
+		</tr>
+		<tr>
+			<td class="tdcon">再次输入密码：</td>
+			<td>
+				<input class="stext" type='password' name="passWordAgain" id="passWordAgain" value="" />
+				<div class="tipinfo"></div>
+			</td>
+		</tr>
+		
+		<tr>
+			<td class="tdcon">手机号码：</td>
+			<td>
+				<input class="stext" type='text' name="sms" id="sms" value="" />
+				<div class="tipinfo"></div>
+			</td>
+		</tr>
+		<tr>
+			<td class="tdcon">邮箱：</td>
+			<td>
+				<input class="stext" type='text' name="email" id="email" value="" />
+				<div class="tipinfo"></div>
+			</td>
+		</tr>
+		<tr>
+			<td></td>
+			<td><button name="Submit" type="submit" class="Button BlueButton Button18">同意服务条款并注册</button></td>
+		</tr>
+	</table>
+	</form>
+</div>
+</body>
+</html>

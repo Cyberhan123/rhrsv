@@ -11,7 +11,9 @@ import numeral from 'numeral';
 
 //import Authorized from '@/utils/Authorized';
 import styles from './index.less';
-
+import ditu from './../../assets/images/ditu.jpg'
+import { Flex } from '_antd-mobile@2.3.1@antd-mobile';
+import { hidden } from '_ansi-colors@3.2.4@ansi-colors';
 // const { Secured } = Authorized;
 
 const targetTime = new Date().getTime() + 3900000;
@@ -29,13 +31,38 @@ const targetTime = new Date().getTime() + 3900000;
 // }))
 class Monitor extends React.Component {
   componentDidMount() {
-    // const { dispatch } = this.props;
-    // dispatch({
-    //   type: 'monitor/fetchTags',
-    // });
+    console.log(BMap)
+    var map = new BMap.Map("baiduditu");
+    map.enableScrollWheelZoom(false);
+    var point = new BMap.Point(126.63, 45.75);
+    // 创建点坐标  
+    map.centerAndZoom(point, 15);
+    map.setMapStyleV2({
+      styleId: '2e1739b9284c1ca0980ab81d93437d1d'
+    })
+    map.disableDoubleClickZoom();
+    map.disableScrollWheelZoom();
+    map.centerAndZoom(point, 12); // 初始化地图，设置中心点坐标和地图级别
+   map.disableContinuousZoom();    // 开启连续缩放效果
+   map.disableInertialDragging(); // 开启惯性拖拽效果
+    // 初始化地图，设置中心点坐标和地图级别 
+    // var MAX = 10;
+    // var markers = [];
+    // var pt = null;
+    // var i = 0;
+    // for (; i < MAX; i++) {
+    //   pt = new BMap.Point(126.63 + Math.random() * 0.85, 45.75 + Math.random() * 0.30);
+    //   markers.push(new BMap.Marker(pt));
+    // }
+    // //最简单的用法，生成一个marker数组，然后调用markerClusterer类即可。
+    // var markerClusterer = new BMapLib.MarkerClusterer(map, { markers: markers });
+  }
+  handle = () => {
+    const w = window.open('about:blank');
+    w.location.href = "/../Unfold/index.html"
   }
   render() {
-     const { monitor, loading } = this.props;
+    const { monitor, loading } = this.props;
     // const { tags } = monitor;
     const tags = [];
     for (let i = 0; i < 50; i += 1) {
@@ -46,36 +73,38 @@ class Monitor extends React.Component {
     }
 
     return (
-      <div>
+      <div style={{
+        minHeight: 1080, overflow: 'hidden',
+      }} >
         <Row gutter={24}>
           <Col xl={18} lg={24} md={24} sm={24} xs={24} style={{ marginBottom: 24 }}>
             <Card
-              title="Real-Time Trading Activity"
+              title="实时动态显示 "
               bordered={false}
             >
               <Row>
                 <Col md={6} sm={12} xs={24}>
                   <NumberInfo
-                    subTitle="Total transactions today"
+                    subTitle="今日商品成交"
                     suffix="元"
-                    total={numeral(124543233).format('0,0')}
+                    total={numeral(1245).format('0,0')}
                   />
                 </Col>
                 <Col md={6} sm={12} xs={24}>
                   <NumberInfo
-                    subTitle="Sales target completion rate"
+                    subTitle="当地库存"
                     total="92%"
                   />
                 </Col>
                 <Col md={6} sm={12} xs={24}>
                   <NumberInfo
-                    subTitle="Remaining time of activity"
+                    subTitle="统计时长"
                     total={<CountDown target={targetTime} />}
                   />
                 </Col>
                 <Col md={6} sm={12} xs={24}>
                   <NumberInfo
-                    subTitle="Total transactions per second"
+                    subTitle="平均时长"
                     suffix="元"
                     total={numeral(234).format('0,0')}
                   />
@@ -83,26 +112,39 @@ class Monitor extends React.Component {
               </Row>
               <div className={styles.mapChart}>
                 <Tooltip
-                  title="Waiting for implementation"
+                  title="卫星实景地图"
                 >
-                  <img
-                    src="https://gw.alipayobjects.com/zos/rmsportal/HBWnDEUXCnGnGrRfrpKa.png"
-                    alt="map"
-                  />
+                  <div className={styles.mapwarper}>
+
+
+                    <div id="baiduditu" style={{ height: 500 }}></div>
+                    <div className={styles.pointer} style={{ left: 500, top: 400 }} >
+                      <a href="javascript:;" onClick={this.handle}></a>
+                    </div>
+                    <div className={styles.pointer} style={{ left: 460, top: 200 }} >
+                      <a href="javascript:;" onClick={this.handle}></a>
+                    </div>
+                    <div className={styles.pointer} style={{ left: 660, top: 200 }} >
+                      <a href="javascript:;" onClick={this.handle}></a>
+                    </div>
+                    <div className={styles.pointer} style={{ left: 660, top: 100 }} >
+                      <a href="javascript:;" onClick={this.handle}></a>
+                    </div>
+                  </div>
                 </Tooltip>
               </div>
             </Card>
           </Col>
           <Col xl={6} lg={24} md={24} sm={24} xs={24}>
             <Card
-              title="Activity forecast"
+              title="动态关注"
               style={{ marginBottom: 24 }}
               bordered={false}
             >
               <ActiveChart />
             </Card>
             <Card
-              title="Efficiency"
+              title="空气质量"
               style={{ marginBottom: 24 }}
               bodyStyle={{ textAlign: 'center' }}
               bordered={false}
@@ -115,7 +157,7 @@ class Monitor extends React.Component {
             </Card>
           </Col>
         </Row>
-        <Row gutter={24}>
+        {/* <Row gutter={24}>
           <Col xl={12} lg={24} sm={24} xs={24} style={{ marginBottom: 24 }}>
             <Card
               title="Proportion Per Category"
@@ -159,14 +201,14 @@ class Monitor extends React.Component {
             </Card>
           </Col>
           <Col xl={6} lg={12} sm={24} xs={24} style={{ marginBottom: 24 }}>
-            <Card
+            {/* <Card
               title="Popular Searches"
               loading={loading}
               bordered={false}
               bodyStyle={{ overflow: 'hidden' }}
             >
               <TagCloud data={tags} height={161} />
-            </Card>
+            </Card> 
           </Col>
           <Col xl={6} lg={12} sm={24} xs={24} style={{ marginBottom: 24 }}>
             <Card
@@ -181,7 +223,7 @@ class Monitor extends React.Component {
               />
             </Card>
           </Col>
-        </Row>
+        </Row>*/}
       </div>
     );
   }

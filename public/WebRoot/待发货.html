@@ -1,0 +1,181 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>我的订单——待发货</title>
+<link href="css/style.css" rel="stylesheet" media="screen" type="text/css">
+<script type="text/javascript" src="js/jquery-2.1.4.min.js"></script>
+<script type="text/javascript" src="js/hidden_nav.js"></script>
+</head>
+<body>
+<div class="headbox">
+	<div class="headtit">
+    	<div class="headtitbox">
+        	<p class="welcome">您好，欢迎来到农业产品网！</p>
+            <ul class="menubox">
+            	<li><a class="menu" href="登录.html" target="_blank">请登录</a></li>
+				<li><a class="menu" href="注册.html" target="_blank">免费注册</a></li>
+            </ul>
+			<div class="phonebox">
+            	<i class="icon-pic"></i>
+                <div class="tellnum">0451-87963519-815</div>
+            </div>
+			<ul class='menubox-right'>
+                <li><a class="menu-right" style='border-right:none;' href="帮助中心.html" target="_blank">帮助中心</a></li>
+				<li><a class="menu-right" href="我的订单.html" target="_blank">我的订单</a></li>
+				<li><a class="menu-right" href="个人信息中心.html" target="_blank">个人中心</a></li>
+			</ul>
+        </div>
+    </div>
+    <div class="site-head">
+    	<h1 class="logo"></h1>
+        <div class="search">
+        	<input class="search-ipt" placeholder='输入产品名称'/>
+            <button class="search-btn">搜索</button>
+			<span class='search-list'>
+				<a href='#'>玉米</a>
+				<a href='#'>桃子</a>
+				<a href='#'>小米</a>
+				<a href='#'>黄瓜</a>
+				<a href='#'>西瓜</a>
+				<a href='#'>茄子</a>
+			</span>
+        </div>
+		<div class="shoppingbox">
+        	<a class="subshopping" href="购物车.html"target="_blank">
+            	<span class="shop-pic"></span>
+                <span class="shop-word">购物车</span>
+                <strong class="shop-num">0</strong>
+                <span class="shop-rem"></span>
+            </a>
+        </div>
+        <div class="qrcodebox">
+        	<span class="qrcode-name">农业产品网</span>
+            <img src="images/src_03.png";/>
+        </div>	
+    </div>
+</div>
+<div class="nav_hidden">
+	<div class="nav_center">
+    	<div class="headnav">
+        	<span>全部商品分类</span>
+            <p></p>
+            <div class="nav_hid" style=" display:none;">
+                <div class="subhid">
+                	 <ul class="catbox">
+                    	<li class="cathhook">
+                        	<a class="cate_01" href="index.html">首页<b></b></a>	
+					    </li>
+						<li class="cathhook">
+                        	<a class="cate_02" href="index.html">水果蔬菜<b></b></a>	
+					    </li>
+						<li class="cathhook">
+                        	<a class="cate_03" href="index.html">畜牧水产<b></b></a>	
+					    </li>
+						<li class="cathhook">
+                        	<a class="cate_04" href="index.html">粮油米面<b></b></a>	
+					    </li>
+						<li class="cathhook">
+                        	<a class="cate_05" href="index.html">农副加工<b></b></a>	
+					    </li>
+						<li class="cathhook">
+                        	<a class="cate_06" href="index.html">苗木花草<b></b></a>	
+					    </li>
+						<li class="cathhook">
+                        	<a class="cate_06" href="index.html">中药材<b></b></a>	
+					    </li>
+					</ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!---开始---->
+<div class="col_main">
+	<div class="dingdantit">
+    	<ul>
+        	<li><a href="我的订单.html">我的订单</a></li>
+            <li><a href="待付款.html">待付款</a></li>
+            <li id="down_line"><a href="待发货.html" style="color:#ff7a00">待发货</a></li>
+            <li><a href="待收货.html">待收货</a></li>
+            <li><a href="待评价.html">待评价</a></li>
+        </ul>
+    </div>
+    <div class="dingdanbox">
+    	<h3>订单查询</h3>
+        <div class="dd_content">
+            <label class="dd_time">
+                <span>订单时间</span>
+                <span>
+                    <span><input value="2016-01-01" type='date'style="border:1px solid #BFBFBF;padding:0 5px;width:150px;height:30px;"/></span>
+                </span>
+                <span>至</span>
+                <span>
+                    <span><input value="2016-05-01" type='date' style="border:1px solid #BFBFBF;padding:0 5px;width:150px;height:30px;"/></span>
+                </span>
+            </label>
+            <label class="dd_btn">
+                <span>
+                    <span><input value="" style="border-width:1px;border-style:solid;border-color:#BFBFBF;height:30px;padding:0 5px;width:270px;" placeholder='商品名称、商品编号、订单编号'/></span>
+                </span>
+                <span><a class="dd_time_btn" href="#">查询</a></span>
+            </label>
+    	</div>
+    </div>
+    <div class="dd_thead" style="background-color:#f6f6f6;border:1px solid #dcdcdc; margin-top:10px; color:#3c3c3c;">
+    	<table style="width:100%;border-collapse:collapse;border-spacing:0px;">
+        	<tbody>
+            	<tr>
+                	<th style="padding:8px 0;font-weight:400; width:30%;">商品</th>
+                    <th style="padding:8px 0;font-weight:400; width:12%;">订购数量</th>
+                    <th style="padding:8px 0;font-weight:400; width:12%;">单价</th>
+                    <th style="padding:8px 0;font-weight:400; width:16%;">交易金额</th>
+                    <th style="padding:8px 0;font-weight:400; width:16%;">下单时间</th>
+                    <th style="padding:8px 0;font-weight:400; width:14%;">
+                    	
+                    </th>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+   <div class="main_bd" style=" width:380px;">
+        <div class="null_img"><img src="images/gwc_null/null_03.png"></div>
+        <div class="null_text">
+			<span style="font-size:14px; display:block; margin-top:30px;">没有符合条件的商品，请尝试其他搜索条件。</span>
+		</div>
+	</div>
+</div>
+<div class="footerbox">
+	<div class="ft_centerbox">
+        <div class="codebox clearfix">
+        	<div class="weixincode">
+            	<p class="code"><img src="images/index_25.png"/></p>
+                <p class="title">手机农产品网<br/>官方微信</p>
+            </div>
+            <div class="weibocode">
+            	<p class="code"><img src="images/index_25.png";/></p>
+                <p class="title">扫码关注<br/>官方微博</p>
+            </div>
+        </div>  
+		<div class="jiaoben">
+		<div class="ft_bigbox">
+            	<p>服务热线：0451-87963519-815&nbsp;</p>
+				<p>传真号码：0451-87963519-815</p><br/>
+				<p>公司地址：哈尔滨市香坊区哈平路凯旋广场A栋19层</p> 
+        </div>
+		<ul class="clearfix">
+    	    <li><a href='#'>营业执照</a></li>
+            <li><a href='#'>软件著作权</a></li>
+            <li><a href='#'>ISO9000认证</a></li>
+            <li><a href='#'>AAA认证</a></li>
+            <li><a href='#'>商标</a></li>
+			<li><a href='#'>企业标准</a></li>
+			<li><a href='#'>产品检验报告</a></li>
+       </ul>
+    <div class="banquan">Copyright 2003-2016版权所有 哈尔滨翔冠科技开发有限公司</div>
+	</div>
+</div>
+    </div>
+</body>
+</html>

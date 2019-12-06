@@ -1,0 +1,41 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>登录</title>
+<link href="css/style.css" rel="stylesheet" media="screen" type="text/css">
+<script type="text/javascript" src="js/jquery-2.1.4.min.js"></script>
+<script type="text/javascript" src="js/login.js"></script>
+</head>
+<body>
+<div class="titlebox">
+	<h2 class="tit_logo"></h2>
+    <div class="tit_img"></div>
+</div>
+<div class="denglubox">
+	<img src="images/denglu/denglu_10.png"/>
+    <div class="loginbox">
+		<h2>Hi，欢迎登录！</h2>
+		<a href="注册.html" class="zc"></a>
+		<div class="login">
+			<div class="login-input-content">
+			<div class="login-input">
+				<label>用&nbsp;户&nbsp;名：</label>
+				<input type="text" placeholder="请输入用户名"  name="info[username]" id="username" class="list-input"/>
+			</div>
+			<div class="login-input">
+				<label>密&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;码：</label>
+				<input type="password" placeholder="请输入密码" name="info[password]" id="password" class="list-input"/>
+			</div>
+    </div>
+	<div class="checkbox clearfix">
+        		<input type="checkbox" id='cBox'/>
+            	<label for='cBox'>记住登录名<a href="找回密码.html" target='ablank'>忘记密码？</a></label>
+        	</div>
+    <div class="login-button"><a href="javascript:void(0);" id="login-button-submit">登录</a></div>
+</div>
+
+</div>
+</div>
+</body>
+</html>

@@ -1,0 +1,388 @@
+<!DOCTYPE html >
+<html>
+	<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+	<meta http-equiv="Content-Language" content="zh-CN">
+	<title>溯源查询详情页</title>
+	<style>
+		#wstatus { position:fixed; left:200px; top:400px; width:auto; height:38px; line-height:38px; background:#fff; border:solid 4px #e5e5e5; padding:5px; z-index:9999; }
+		#wstatus .wstatus_s { width:38px; height:38px; float:left; }
+		#wstatus .wstatus_s1 {  background:url(http://sats.gdcct.com:80/ts/images/clientresult/ico.png) no-repeat left center; }
+		#wstatus .wstatus_f { padding:0 6px 0 6px; text-align:left; font-size:14px; color:#333; font-family:"微软雅黑"; }
+		#bremove { width:100%; height:100%; background:#000; opacity:0.3; filter:alpha(opacity=30); z-index:900; position:fixed; left:0; top:0; }
+	</style>
+	<script type="text/javascript" src="../js/jquery-2.1.4.min.js"></script>
+	<script type="text/javascript" src="../js/common.js"></script>
+	<script type="text/javascript">
+	$(function(){
+		if("null" != "null" &&  "null" != ""){
+			popStatus(1, 'null', 2, '', true);
+		}
+	})
+	</script>
+	<script type="text/javascript">
+	        var code; //在全局 定义验证码  
+	        function createCode(){ 
+	        	code = "";
+	            var codeLength = 4;//验证码的长度  
+	            //所有候选组成验证码的字符，可以用中文  
+	            //var selectChar = new Array(0,1,2,3,4,5,6,7,8,9,'A','B','C','D','E','F','G','H','I','J','K','L','M','N','O','P','Q','R','S','T','U','V','W','X','Y','Z','a','b','c','d','e','f','g','h','i','j','k','l','m','n','o','p','q','r','s','t','u','v','w','x','y','z');  
+	            var selectChar = new Array(1,2,3,4,5,6,7,8,9,'A','B','C','D','E','F','G','H','J','K','L','M','N','P','Q','R','S','T','U','V','W','X','Y','Z','a','b','c','d','e','f','g','h','i','j','k','m','n','p','q','r','s','t','u','v','w','x','y','z');  
+	            for(var i=0; i<codeLength; i++)  
+	            {  
+	                var charIndex = Math.floor(Math.random()*60);  
+	                code += selectChar[charIndex];  
+	            }  
+	            return code;  
+	        }  
+	        
+	       /* //显示验证码  
+	        function show(){
+	        	var code = createCode();//获得随机生成的验证码字符串
+	        	var w = 0;//设置验证码图片的宽度,0即为不设置,VerificationCodeAction的默认宽度为70
+	        	var h = 0;//设置验证码图片的高度,0即为不设置,VerificationCodeAction的默认高度为23
+	            document.getElementById("code").src="http://sats.gdcct.com:80/ts/topic/verifyImg.jspx?code="+code+"&width="+w+"&height="+h;
+	    	}  
+	        
+	    	window.onload = function() {//document.onload=show();  
+	        	show();//页面加载时加载验证码,这时无论在ie还是在firefox中，js没有加载完，页面的东西是不会被执行的；  
+	        }  
+	    	
+	    	function validate ()
+	    	{  
+	    	    var inputCode = document.getElementById("vfcode").value.toLowerCase();
+	    	    if(inputCode.length == 0)  
+	    	    {  
+	    	        //alert("请输入验证码！"); 
+	    	        document.getElementById("vfcode").innerHTML = "";
+	    	        document.getElementById("showMsg").innerHTML = "请输入验证码";
+	    	        return false;  
+	    	    }  
+	    	    else if(inputCode != code.toLowerCase())  
+	    	    {  
+	    	        //alert("验证码输入错误！");  
+	    	        document.getElementById("vfcode").value = "";
+	    	        document.getElementById("showMsg").innerHTML = "验证码输入错误";
+	    	        show();//刷新验证码  
+	    	        return false;  
+	    	    }  
+	    	    else{
+    	        	document.loginForm.submit();
+    	        	return true;  
+	    	    } 
+	    	}  */
+	</script>
+	<script type="text/javascript">
+		// "0"~"9"按钮
+		var ts = "";
+		function tsInput(name){
+			ts = document.getElementById("tracesource").value;
+			var num = document.getElementById(name).value;
+			ts += num;
+			document.getElementById("tracesource").value = ts;
+			
+		}
+		// 退格按钮
+		function btnBack(){
+			var tmpTS = document.getElementById("tracesource").value;
+			if(tmpTS.length > 0){
+				var tmpCode = tmpTS.substring(0, tmpTS.length-1);
+				document.getElementById("tracesource").value = tmpCode;
+				ts = tmpCode;
+			}
+		}
+		// 清除按钮
+		function btnClear(){
+			document.getElementById("tracesource").value = "";
+			ts = "";
+		}
+	</script>
+	<script language="javascript" type="text/javascript">
+	/** 提交验证函数 **/
+	function submitFn() {
+		var tracesource = document.getElementById("tracesource").value.replace(
+				/\r/g, "").replace(/\n/g, "");
+		var iphone=document.getElementById('iphone').value;
+		if (!/^\d*$/.test(tracesource)) {
+			popStatus(1, '溯源码只能为数字！', 2, '', true);
+			document.getElementById("tracesource").focus();
+			return false;
+		} else if (tracesource.length >0 && tracesource.length != 20) {
+			popStatus(1, '溯源码的长度为20位！', 2, '', true);
+			document.getElementById("tracesource").focus();
+			return false;
+		} else if(tracesource.length == 0){
+			popStatus(1, '请输入溯源码！', 2, '', true);
+			document.getElementById("tracesource").focus();
+			return false;
+		}else if(iphone.length==0){
+			popStatus(1, '请输入手机号！', 2, '', true);
+			document.getElementById("tracesource").focus();
+			return false;
+		}
+		else if(!(/^1[3|4|5|8][0-9]\d{4,8}$/.test(iphone))){ 
+			popStatus(1, '请正确输入手机号！',2,'',true);
+			document.getElementById('iphone').focus();
+			return false;
+		}else{
+			document.searchForm.submit();
+			return true;
+		}
+	}
+
+	</script>
+    <script type="text/javascript">
+      /*  function aOnClick() {
+            var roleSelect = document.getElementById("roleID");
+            if (roleSelect.value == 0) {
+                alert("请选择登录角色！");
+            } else {
+				document.getElementById("selectRoleForm").submit();
+            	
+            }
+        }*/
+    </script>
+	<link type="text/css" rel="stylesheet" href="../css/pagestyle.css">
+	<link type="text/css" rel="stylesheet" href="../css/sy.css">
+	<link type="text/css" rel="stylesheet" href="../css/style.css">
+</head>
+
+<body>
+<div class="headbox">
+	<div class="headtit">
+    	<div class="headtitbox">
+        	<p class="welcome">您好，欢迎来到农业产品网！</p>
+            <ul class="menubox">
+            	<li><a class="menu" href="../登录.html" target="_blank">请登录</a></li>
+				<li><a class="menu" href="../注册.html" target="_blank">免费注册</a></li>
+            </ul>
+			<div class="phonebox">
+            	<i class="icon-pic"></i>
+                <div class="tellnum">0451-87963519-815</div>
+            </div>
+			<ul class='menubox-right'>
+                <li><a class="menu-right" style='border-right:none;' href="../帮助中心.html" target="_blank">帮助中心</a></li>
+				<li><a class="menu-right" href="../我的订单.html" target="_blank">我的订单</a></li>
+				<li><a class="menu-right" href="../个人信息中心.html" target="_blank">个人中心</a></li>
+			</ul>
+        </div>
+    </div>
+<div class="banner_detail" id="steps_0">
+	
+</div>
+    <div class="w-main">
+    	<div class="w-main-ul">
+        	<h2>产品生产信息</h2>
+            <ul class="infolist">
+            	<li>
+            		产品名称：
+            		
+						<label id="traceSourceQueryVO_productName">青花湖小米</label>
+					
+				</li>
+				
+                	<li>品牌：<label id="traceSourceQueryVO_brand">青花湖小米</label></li>
+                
+                
+            </ul>
+            <ul class="infolist">
+            	<li>生产企业：
+					
+						<label id="traceSourceQueryVO_enterpriseName">青花湖小米商贸有限公司</label>
+					
+			    </li>
+            </ul>
+            <ul class="infolist daline">
+            	<li>溯源码：
+            	    
+						<label id="traceSourceQueryVO_traceSource">97155100850506003548</label>
+					
+				</li>
+                <li>批次号：
+               	    
+						<label id="traceSourceQueryVO_batchName">201408251654451770</label>
+					
+				</li>
+                <li>生产日期：
+				    
+						2014-08-26
+					
+				</li>
+                <li>保质日期：
+ 					
+					   2014-11-26
+				   
+				</li>
+				
+            </ul>
+        </div>
+        <div class="w-main-box">
+           
+            <p class="infofrom">录入机构：
+				
+					<label id="">青花湖小米商贸有限公司</label>
+				
+			</p>
+            <div class="sdline"></div>
+        </div>
+        
+        
+        
+    	<div class="w-main-ul">
+        	<h2>生产基地信息</h2>
+            <ul class="infolist">
+            	<li>基地名称：青花湖小米专业合作社</li>
+            </ul>
+            <ul class="infolist">
+            	<li>基地地址：
+								陕西省
+							 	西安市
+								碑林区
+								洛川县石头镇吴家村
+
+				</li>
+            </ul>
+            <ul class="infolist">
+            	<li>基地类型：水稻种植</li>
+                <li>基地面积：3000.0 km²</li>
+                <li>建成时间：2011-01-28</li>
+            </ul>
+            <ul class="infolist">
+            	<li>
+                	<span>资源情况：</span>
+                    <div class="endcontent">
+                    	优
+                    </div>
+                </li>
+            </ul>
+            <ul class="infolist daline">
+            	<li>
+                	<span>环境情况：</span>
+                    <div class="endcontent">
+                    	优
+                    </div>
+                </li>
+            </ul>
+        </div>
+        <div class="w-main-box">
+            
+           
+            <div class="sdline"></div>
+        </div>
+        
+          
+    	<div class="w-main-ul">
+        	<h2>生产企业信息</h2>
+            <ul class="infolist">
+            	<li>企业名称：青花湖小米商贸有限公司</li>
+            </ul>
+            <ul class="infolist">
+            	<li>
+                	<span>主营产品：</span>
+                    <div class="endcontent">
+                    	青花湖小米
+					</div>
+                </li>
+            </ul>
+            
+            <ul class="infolist">
+            	
+            		<li>组织机构代码：56711148-1</li>
+            	
+            	
+                	<li>营业执照号码：610000100399553</li>
+                
+            </ul>
+            <ul class="infolist">
+            	
+            		<li>联系电话：029-89357630</li>
+            	
+            	
+            </ul>
+            <ul class="infolist">
+            	
+            		<li>联系地址：西安市碑林区太白立交凯旋城5-1003</li>
+            	
+            </ul>
+            <ul class="infolist">
+            	
+            		<li>网　　址：<a href="http://www.xahst.com/" target="_blank">http://www.xahst.com</a></li>
+            	
+            </ul>
+            <ul class="infolist daline">
+            	
+            </ul>
+        </div>
+		 
+       <div class="w-main-ul">
+			<h2>物流信息</h2>
+			
+			<ul class="infolist">
+				<li>收货地址：</li>
+			</ul>
+			<ul class="infolist">
+				<li>运送方式：快递</li>
+			</ul>
+			<ul class="infolist">
+				<li>物流公司：中通快递</li>
+			</ul>
+			<ul class="infolist">
+				<li>运单号：123456789888</li>
+			</ul>
+			<ul class="infolist">
+				<li>买家留言：</li>
+			</ul>
+			</ul>
+            <ul class="infolist daline">
+            	
+            </ul>
+		</div>
+        <div class="w-main-box">
+            
+           <div class="sdline"></div>
+        </div>
+
+
+
+    	<div class="w-main-ul">
+        	<h2>视频</h2>
+           <video src="../data/oceans-clip.mp4" controls    poster="../images/xin_3305042318219061465115.jpg"></video>
+        </div>
+        <div class="w-main-box">
+        	
+        </div>
+    </div>
+<div class="footerbox">
+	<div class="ft_centerbox">
+        <div class="codebox clearfix">
+        	<div class="weixincode">
+            	<p class="code"><img src="../images/index_25.png"/></p>
+                <p class="title">手机农产品网<br/>官方微信</p>
+            </div>
+            <div class="weibocode">
+            	<p class="code"><img src="../images/index_25.png";/></p>
+                <p class="title">扫码关注<br/>官方微博</p>
+            </div>
+        </div>  
+		<div class="jiaoben">
+		<div class="ft_bigbox">
+            	<p>服务热线：0451-87963519-815&nbsp;</p>
+				<p>传真号码：0451-87963519-815</p><br/>
+				<p>公司地址：哈尔滨市香坊区哈平路凯旋广场A栋19层</p> 
+        </div>
+		<ul class="clearfix">
+    	    <li><a href='#'>营业执照</a></li>
+            <li><a href='#'>软件著作权</a></li>
+            <li><a href='#'>ISO9000认证</a></li>
+            <li><a href='#'>AAA认证</a></li>
+            <li><a href='#'>商标</a></li>
+			<li><a href='#'>企业标准</a></li>
+			<li><a href='#'>产品检验报告</a></li>
+       </ul>
+    <div class="banquan">Copyright 2003-2016版权所有 哈尔滨翔冠科技开发有限公司</div>
+	</div>
+</div>
+	</div>
+	</div>
+</body>
+</html>

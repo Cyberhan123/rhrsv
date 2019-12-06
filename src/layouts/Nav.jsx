@@ -14,6 +14,10 @@ class Header extends React.Component {
       menuHeight: 0,
     };
   }
+  handle=()=>{
+    const w=window.open('about:blank');
+    w.location.href="/../WebRoot/index.html"
+  }
 
   phoneClick = () => {
     const menu = findDOMNode(this.menu);
@@ -76,10 +80,10 @@ class Header extends React.Component {
                <Link to="/">欢迎</Link>
              </Item>
               <Item key='2'>
-                <Link to="/BigData">大数据</Link>
+                <Link to="/BigData">实景地图</Link>
               </Item>
               <Item key='3'>
-                <Link to="/Shop">商城</Link>
+                <a href="javascript:;" onClick={this.handle}>商城</a>
               </Item>
               <Item key='4'>
                 <Link to="/About">关于</Link>

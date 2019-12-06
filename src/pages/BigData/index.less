@@ -5,6 +5,7 @@
   padding-top: 24px;
   height: 452px;
   text-align: center;
+
   img {
     display: inline-block;
     max-width: 100%;
@@ -16,8 +17,43 @@
   font-size: 24px !important;
 }
 
+.pointer {
+  position: absolute;
+  width: 15px;
+  height: 15px;
+  border-radius: 50%;
+  background: red;
+  animation: scr 1s infinite both;
+
+  a {
+    display: block;
+    width: 100%;
+    height: 100%;
+  }
+}
+
+@keyframes scr {
+  0% {
+    transform: scale(1.5, 1.5);
+
+  }
+
+  100% {
+    transform: scale(1, 1);
+  }
+}
+
 @media screen and (max-width: @screen-lg) {
   .mapChart {
     height: auto;
   }
+}
+
+#baiduditu {
+  min-height: 800px;
+}
+.mapwarper{
+  position: relative;
+  height: 800px;
+  width: 1080px;
 }

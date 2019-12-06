@@ -148,7 +148,7 @@ export const Content10DataSource = {
     className: 'content1-title',
     children: (
       <span>
-        <p>合理的管理是大数据的根基</p>
+        <p> 基于大数据处理与分析的创新项目</p>
       </span>
     ),
   },
@@ -157,7 +157,9 @@ export const Content10DataSource = {
     children: (
       <span>
         <p>
-          云资源集中编排、服务器弹性伸缩、持续发布和部署，数据库具有高可用及容灾。
+        直观的空间视图
+清晰的观察松花江流域范围，河流将对人文社会的影响不容忽视。
+
         </p>
       </span>
     ),
@@ -174,7 +176,7 @@ export const Content30DataSource = {
         name: 'title',
         children: (
           <span>
-            <p>商城</p>
+            <p>实时动态显示</p>
           </span>
         ),
         className: 'title-h1',
@@ -213,7 +215,7 @@ export const Content30DataSource = {
             className: 'content3-content',
             children: (
               <span>
-                <p>商城资源使用大数据和机器学习算法，更智能，更高效。</p>
+                <p>使用大数据和机器学习算法，更智能，更高效。</p>
               </span>
             ),
           },

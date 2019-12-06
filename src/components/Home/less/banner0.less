@@ -10,6 +10,7 @@
   background-size: cover;
   background-attachment: fixed;
   background-position: center;
+  animation: roale 2s infinite both;
   & &-text-wrapper {
     display: inline-block;
     position: absolute;
@@ -71,6 +72,12 @@
   }
 }
 
+@keyframes roale{
+0%{
+  transform: rotate(0deg);
+  transform: rotate(360deg);
+}
+}
 @media screen and (max-width: 767px) {
   .@{banner0} {
     background-attachment: inherit;

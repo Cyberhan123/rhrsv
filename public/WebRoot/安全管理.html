@@ -1,0 +1,150 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>安全管理</title>
+<link href="css/style.css" rel="stylesheet" media="screen" type="text/css">
+<script type="text/javascript" src="js/jquery-2.1.4.min.js"></script>
+<script type="text/javascript" src="js/shangchuantouxiang.js"></script>
+<script language="javascript" src="js/PCASClass.js"></script>
+</head>
+<body>
+<div class="headbox">
+	<div class="headtit">
+    	<div class="headtitbox">
+        	<p class="welcome">您好，欢迎来到农业产品网！</p>
+            <ul class="menubox">
+            	<li><a class="menu" href="登录.html" target="_blank">请登录</a></li>
+				<li><a class="menu" href="注册.html" target="_blank">免费注册</a></li>
+            </ul>
+			<div class="phonebox">
+            	<i class="icon-pic"></i>
+                <div class="tellnum">0451-87963519-815</div>
+            </div>
+			<ul class='menubox-right'>
+                <li><a class="menu-right" style='border-right:none;' href="帮助中心.html" target="_blank">帮助中心</a></li>
+				<li><a class="menu-right" href="我的订单.html" target="_blank">我的订单</a></li>
+				<li><a class="menu-right" href="个人信息中心.html" target="_blank">个人中心</a></li>
+			</ul>
+        </div>
+    </div>
+    <div class="site-head">
+    	<h1 class="logo"></h1>
+        <div class="search">
+        	<input class="search-ipt" placeholder='输入产品名称'/>
+            <button class="search-btn">搜索</button>
+			<span class='search-list'>
+				<a href='#'>玉米</a>
+				<a href='#'>桃子</a>
+				<a href='#'>小米</a>
+				<a href='#'>黄瓜</a>
+				<a href='#'>西瓜</a>
+				<a href='#'>茄子</a>
+			</span>
+        </div>
+		<div class="shoppingbox">
+        	<a class="subshopping" href="购物车.html"target="_blank">
+            	<span class="shop-pic"></span>
+                <span class="shop-word">购物车</span>
+                <strong class="shop-num">0</strong>
+                <span class="shop-rem"></span>
+            </a>
+        </div>
+        <div class="qrcodebox">
+        	<span class="qrcode-name">农业产品网</span>
+            <img src="images/src_03.png";/>
+        </div>	
+    </div>
+</div>
+
+
+<!---开始---->
+<div class="col_main">
+  <div class="tabs-containergr">
+	<div class="tabs-navgr"><a href='javascript:;'>个人信息</a></div>  
+    <div class="tabs-panelsgr"> 	
+          <span>
+		     <h3>头像信息</h3>
+		     <h3>安全管理</h3>
+		  </span>
+    </div>
+	<div class='tabs-left'>
+      <div id="preview">
+         <img id="imghead" border=0 src="images/head_180.jpg" width="100" height="100" />		
+      </div>
+	  <input type="file" onchange="previewImage(this)" style='margin-left:20px;'/>
+	  <div class="guanli">
+			<ul>
+				<li style="background:#eee;"><a href="安全管理.html"><b></b>安全管理</a></li>
+				<li><a href="个人信息中心.html"><b></b>个人资料</a></li>
+				<li><a href="收货地址.html"><b></b>收货地址</a></li>
+			</ul>
+	  </div>
+	  
+	</div>
+	
+<!--您的基础信息--->
+    <div class='tabs-right'>
+	     <div class="jichuxinxi">
+			<p>您的基础信息</p>
+			<ul>
+				<li>会员名：</li>
+				<li>登录邮箱：222***00@qq.com<a href="#" class="youxiang">修改邮箱</a></li>
+				<li>绑定手机号：131****0000<a href="#" class="shouji">修改手机</a></li>
+			</ul>
+		 </div>  
+		 <!----您的安全服务--------->
+		 <div class="anquanfuwu">
+			<p>您的安全服务</p>
+			<p class="dengji">安全等级：<span>中</span><meter id="pro1" low="20" high="170" value="150" min="0" max="200" optimum="100" style="width:200px;"/></p>
+			<ul class="safe--info">
+    			<li class="item identity">
+						<div class="state">
+    						<span class="over">已完成</span>
+						</div>
+							<div class="title"><em>邮&nbsp;箱&nbsp;认&nbsp;证</em></div>
+    						
+    						<div class="supply">绑定邮箱后，您即可享受丰富的邮箱服务，如邮箱找回密码等。</div>
+    						<div class="operate">
+    						<a title="查看" href="#">查看</a>
+    							    							    							         </div>
+    			</li>
+    			<li class="item password ">
+						<div class="state">
+    						<span class="over">已设置</span>
+						</div>
+							<div class="title"><em>登&nbsp;录&nbsp;密&nbsp;码</em></div>
+    						
+    						<div class="supply">建议您定期更换密码，且设置一个包含数字和字母，并长度超过6位以上的密码。</div>
+    						<div class="operate">
+    						<a title="查看" href="#">查看</a>
+    							    							    							         </div>
+    			</li>
+    			
+    			<li class="item phonebind ">
+					<div class="state">
+    						<span class="over">已绑定</span>
+						</div>
+    						<div class="title"><em>绑&nbsp;定&nbsp;手&nbsp;机</em></div>
+    						<div class="supply">绑定手机后，您即可享受丰富的手机服务，如手机找回密码等</div>
+    						
+							<div class="operate">
+    						<a title="查看" href="#">修改</a>
+    							    							    							         </div>
+    			</li>
+			</ul>
+		 </div> 
+	
+	</div> 
+	     
+   </div>   	 
+  </div>	
+
+<script language="javascript" defer>
+new PCAS("province","city","area","吉林省","白城市","大安市");
+new PCAS("province1","city1","area1","吉林省","吉林市","龙潭区");
+new PCAS("province2","city2","area2","江苏省","苏州市","沧浪区");
+</script>
+
+</body>
+</html>
